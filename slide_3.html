@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Actualizaciones y Contenido</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
+    <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+    <style>
+        .content-card {
+            height: 450px;
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .icon-container {
+            height: 80px;
+            width: 80px;
+            border-radius: 50%;
+        }
+
+        .dlc-pill {
+            display: inline-block;
+            padding: 5px 12px;
+            margin: 5px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="slide bg-gray-900 flex flex-col items-center justify-between">
+        <!-- Top section with title -->
+        <div class="w-full pt-10 pb-4 px-16 text-center">
+            <h1 class="title text-5xl font-bold text-white mb-2">Actualizaciones y Contenido</h1>
+            <p class="subtitle text-2xl text-gray-300">Comparación de expansión y evolución</p>
+        </div>
+        <!-- Middle section with comparison -->
+        <div class="flex w-full px-16 h-full relative">
+            <!-- Divider line -->
+            <div class="divider"></div>
+            <!-- Left side - Ponerla -->
+            <div class="w-1/2 h-full flex flex-col items-center justify-center pr-6">
+                <div class="content-card bg-gray-800 rounded-lg p-6 shadow-lg w-full">
+                    <div class="flex flex-col items-center">
+                        <div class="icon-container bg-red-900 mb-4">
+                            <i class="fas fa-sync-alt text-5xl text-red-300"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mb-3">Ponerla</h2>
+                        <div class="flex items-center justify-center mb-3">
+                            <i class="fas fa-redo-alt text-3xl text-red-500 mr-2"></i>
+                            <span class="text-xl font-bold text-red-500">Gameplay Estancado</span>
+                        </div>
+                        <ul class="text-gray-300 text-xl space-y-3 w-full">
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Gameplay milenario sin actualizaciones</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Nunca recibió mejoras ni expansiones</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
+                                <span>Siempre el mismo loop predecible</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 p-3 bg-gray-900 rounded-lg w-full">
+                            <p class="text-gray-300 italic text-center">
+                                "Un pajarito conoce a una pajarita, dos minutos de goce carnal después de que se gusten y luego demanda de alimentos, muy zeta zeta."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Right side - Dark Souls 3 -->
+            <div class="w-1/2 h-full flex flex-col items-center justify-center pl-6">
+                <div class="content-card bg-gray-800 rounded-lg p-6 shadow-lg w-full">
+                    <div class="flex flex-col items-center">
+                        <div class="icon-container bg-blue-900 mb-4">
+                            <i class="fas fa-expand-alt text-5xl text-blue-300"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-white mb-3">Dark Souls 3</h2>
+                        <div class="flex items-center justify-center mb-3">
+                            <i class="fas fa-plus-circle text-3xl text-blue-500 mr-2"></i>
+                            <span class="text-xl font-bold text-blue-500">Contenido Rico</span>
+                        </div>
+                        <div class="flex flex-wrap justify-center mb-4">
+                            <span class="dlc-pill bg-blue-800 text-white">Ashes of Ariandel <span class="text-blue-300">~5h</span></span>
+                            <span class="dlc-pill bg-blue-800 text-white">Ringed City <span class="text-blue-300">8-9h</span></span>
+                        </div>
+                        <ul class="text-gray-300 text-xl space-y-3 w-full">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Constantes actualizaciones y expansiones</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Horas adicionales de juego y narrativa</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <span>Plot twist brutal (Gael)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom section with conclusion -->
+        <div class="w-full px-16 pb-10">
+            <div class="bg-gray-800 bg-opacity-70 rounded-lg p-4 text-center">
+                <p class="text-2xl text-yellow-400 font-bold italic">"Dark Souls 3: <span class="text-blue-400">punto para Dark Souls</span>"</p>
+            </div>
+        </div>
+        <!-- Page number -->
+        <div class="page-number">3/10</div>
+    </div>
+
+    <script>
+        // No data visualization needed for this slide
+    </script>
+
+</body>
+</html>

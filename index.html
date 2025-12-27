@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS3 vs Ponerla – Visor de Slides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=DM+Serif+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            color-scheme: dark;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background: radial-gradient(circle at top, #1f2937 0%, #0f172a 60%, #020617 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(12px);
+            background: linear-gradient(90deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.85));
+            border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+        }
+
+        header h1 {
+            margin: 0;
+            font-family: 'DM Serif Display', serif;
+            font-size: 28px;
+            letter-spacing: 0.5px;
+        }
+
+        .viewer {
+            flex: 1;
+            display: flex;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 320px;
+            padding: 24px;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.6));
+            border-right: 1px solid rgba(148, 163, 184, 0.15);
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            margin: 0 0 16px;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #94a3b8;
+        }
+
+        .slide-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: grid;
+            gap: 12px;
+        }
+
+        .slide-button {
+            width: 100%;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            background: rgba(30, 41, 59, 0.65);
+            color: inherit;
+            font: inherit;
+            text-align: left;
+            padding: 14px 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .slide-button span {
+            display: inline-flex;
+            width: 28px;
+            height: 28px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .slide-button strong {
+            font-weight: 600;
+        }
+
+        .slide-button:hover {
+            transform: translateX(4px);
+            border-color: rgba(96, 165, 250, 0.6);
+            background: rgba(30, 64, 175, 0.3);
+        }
+
+        .slide-button.active {
+            border-color: rgba(250, 204, 21, 0.8);
+            background: rgba(202, 138, 4, 0.25);
+            box-shadow: 0 0 22px rgba(250, 204, 21, 0.15);
+        }
+
+        .stage {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 24px;
+        }
+
+        iframe {
+            flex: 1;
+            width: 100%;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+            border-radius: 16px;
+            background: #0f172a;
+        }
+
+        .controls {
+            margin-top: 16px;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .controls button {
+            flex: 1;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border: 1px solid rgba(148, 163, 184, 0.25);
+            background: rgba(30, 41, 59, 0.8);
+            color: inherit;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+        }
+
+        .controls button:hover {
+            background: rgba(59, 130, 246, 0.25);
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-1px);
+        }
+
+        .controls button:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        footer {
+            padding: 12px 24px;
+            text-align: center;
+            font-size: 14px;
+            color: #94a3b8;
+            border-top: 1px solid rgba(148, 163, 184, 0.15);
+            background: rgba(15, 23, 42, 0.85);
+        }
+
+        @media (max-width: 1024px) {
+            .viewer {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+                display: flex;
+                gap: 16px;
+                overflow-x: auto;
+            }
+
+            .slide-list {
+                display: flex;
+                gap: 12px;
+                flex-wrap: nowrap;
+            }
+
+            .slide-button {
+                min-width: 220px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Dark Souls 3 vs Ponerla</h1>
+        <div>Visor interactivo de 10 diapositivas</div>
+    </header>
+    <main class="viewer">
+        <aside class="sidebar">
+            <h2>Diapositivas</h2>
+            <ul class="slide-list" id="slideList"></ul>
+        </aside>
+        <section class="stage">
+            <iframe id="slideFrame" title="Slide actual" src="" loading="lazy"></iframe>
+            <div class="controls">
+                <button id="prevBtn" type="button">⟵ Anterior</button>
+                <button id="nextBtn" type="button">Siguiente ⟶</button>
+            </div>
+        </section>
+    </main>
+    <footer>
+        Usa las flechas del teclado o los botones para navegar. Haz clic en cualquier diapositiva del listado para saltar directamente.
+    </footer>
+
+    <script>
+        const slides = [
+            { file: 'slide_1.html', title: 'Dark Souls 3 vs. Ponerla' },
+            { file: 'slide_2.html', title: 'El Dilema del Speedrun' },
+            { file: 'slide_3.html', title: 'Actualizaciones y Contenido' },
+            { file: 'slide_4.html', title: 'El Gameplay de Ponerla' },
+            { file: 'slide_5.html', title: 'Personajes en Ponerla' },
+            { file: 'slide_6.html', title: 'Personajes en Dark Souls 3' },
+            { file: 'slide_7.html', title: 'Apartado Musical' },
+            { file: 'slide_8.html', title: 'Escenarios y Paisajes' },
+            { file: 'slide_9.html', title: 'Conclusión del Análisis' },
+            { file: 'slide_10.html', title: 'Remate Final' }
+        ];
+
+        const slideList = document.getElementById('slideList');
+        const slideFrame = document.getElementById('slideFrame');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        let currentIndex = 0;
+
+        function renderList() {
+            slideList.innerHTML = '';
+            slides.forEach((slide, index) => {
+                const li = document.createElement('li');
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.className = 'slide-button';
+                button.innerHTML = `<span>${index + 1}</span><strong>${slide.title}</strong>`;
+                button.addEventListener('click', () => loadSlide(index));
+                li.appendChild(button);
+                slideList.appendChild(li);
+            });
+        }
+
+        function updateActiveState() {
+            const buttons = slideList.querySelectorAll('.slide-button');
+            buttons.forEach((btn, index) => {
+                btn.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function loadSlide(index) {
+            currentIndex = Math.max(0, Math.min(index, slides.length - 1));
+            slideFrame.src = slides[currentIndex].file;
+            updateActiveState();
+            updateControls();
+        }
+
+        function updateControls() {
+            prevBtn.disabled = currentIndex === 0;
+            nextBtn.disabled = currentIndex === slides.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => loadSlide(currentIndex - 1));
+        nextBtn.addEventListener('click', () => loadSlide(currentIndex + 1));
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                loadSlide(currentIndex - 1);
+            } else if (event.key === 'ArrowRight') {
+                loadSlide(currentIndex + 1);
+            }
+        });
+
+        renderList();
+        loadSlide(0);
+    </script>
+</body>
+</html>
