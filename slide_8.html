@@ -1,183 +1,207 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Escenarios y Paisajes</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<link href="styles.css" rel="stylesheet">
-<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script><style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=DM+Serif+Display:wght@700&display=swap');
-        
-        body, html {width: 1280px; min-height: 720px; margin: 0;
-            padding: 0;}
-        
-        .slide {
-            width: 1280px;
-            min-height: 720px;
-            position: relative;
-            font-family: 'Roboto', sans-serif;
-        }
-        
-        .title {
-            font-family: 'DM Serif Display', serif;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-        
-        .subtitle {
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-        }
-        
-        .divider {
-            position: absolute;
-            top: 0;
-            left: 50%;
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Escenarios y Paisajes</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+    <style>
+        :root { color-scheme: dark; }
+
+        /* Pantalla completa para iframe */
+        html, body {
+            width: 100%;
             height: 100%;
-            width: 4px;
-            background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.7), rgba(255,255,255,0));
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            overflow: hidden;
         }
-        
-        .location-card {
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
+
+        .reveal {
+            width: 100%;
+            height: 100%;
         }
-        
-        .location-card:hover {
-            transform: translateX(5px);
+
+        .reveal .slides {
+            width: 100% !important;
+            height: 100% !important;
+            inset: 0 !important;
+            transform: none !important;
         }
-        
-        .epic-location {
-            border-left-color: #3B82F6;
-        }
-        
-        .mundane-location {
-            border-left-color: #EF4444;
-        }
-        
-        .icon-container {
-            height: 60px;
-            width: 60px;
-            display: flex;
+
+        .reveal .slides section {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
             align-items: center;
             justify-content: center;
-            border-radius: 50%;
         }
-        
-        .page-number {
+
+        .divider-vertical {
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            height: 65%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        .location-card {
+            transition: all 0.3s ease;
+            border-left: 5px solid transparent;
+            height: calc((65vh - 24px) / 3);
+            min-height: 120px;
+        }
+
+        .location-card h3 {
+            font-size: 2.5rem !important;
+        }
+
+        .location-card:hover {
+            transform: translateX(10px);
+            background: rgba(55, 65, 81, 0.9) !important;
+        }
+
+        .epic-location { border-left-color: #3b82f6; }
+        .mundane-location { border-left-color: #ef4444; }
+
+        .location-image {
+            width: 200px;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .location-image-left {
+            margin-left: 20px;
+        }
+
+        .location-image-right {
+            margin-right: 20px;
+        }
+
+        .custom-page-number {
             position: absolute;
             bottom: 20px;
-            right: 20px;
-            font-size: 16px;
-            color: #6B7280;
+            right: 30px;
+            color: #4b5563;
+            font-family: sans-serif;
+            font-size: 1.2rem;
         }
-    
-body {
-    width: 1280px;
-    min-height: 720px;
-    
-    
-}</style>
+    </style>
 </head>
 <body>
-<div class="slide bg-gray-900 flex flex-col items-center justify-between">
-<!-- Top section with title -->
-<div class="w-full pt-10 pb-6 px-16 text-center">
-<h1 class="title text-5xl font-bold text-white mb-2">Escenarios y Paisajes</h1>
-<p class="subtitle text-2xl text-gray-300">Comparación visual entre entornos épicos y mundanos</p>
-</div>
-<!-- Middle section with comparison -->
-<div class="flex w-full px-16 pb-10 h-full relative">
-<!-- Divider line -->
-<div class="divider"></div>
-<!-- Left side - Dark Souls 3 -->
-<div class="w-1/2 h-full flex flex-col items-center justify-center pr-8">
-<div class="bg-gray-800 rounded-lg p-6 shadow-lg w-full">
-<h2 class="text-3xl font-bold text-white mb-4 flex items-center">
-<i class="fas fa-mountain text-blue-400 mr-3"></i>
-                        Paisajes Épicos
-                    </h2>
-<div class="space-y-4">
-<div class="location-card epic-location bg-gray-700 bg-opacity-70 rounded p-4">
-<div class="flex items-center">
-<div class="icon-container bg-blue-900 mr-4">
-<i class="fas fa-dragon text-3xl text-blue-300"></i>
-</div>
-<div>
-<h3 class="text-xl font-bold text-blue-300">Pico del Archidragón</h3>
-<p class="text-gray-300">Cima final del juego, donde el destino del mundo se decide en una batalla contra el Archidragón.</p>
-</div>
-</div>
-</div>
-<div class="location-card epic-location bg-gray-700 bg-opacity-70 rounded p-4">
-<div class="flex items-center">
-<div class="icon-container bg-blue-900 mr-4">
-<i class="fas fa-ring text-3xl text-blue-300"></i>
-</div>
-<div>
-<h3 class="text-xl font-bold text-blue-300">Ciudad Anillada</h3>
-<p class="text-gray-300">Misteriosa ciudad en el interior de un gran anillo, llena de desafíos y secretos oscuros.</p>
-</div>
-</div>
-</div>
-<div class="location-card epic-location bg-gray-700 bg-opacity-70 rounded p-4">
-<div class="flex items-center">
-<div class="icon-container bg-blue-900 mr-4">
-<i class="fas fa-church text-3xl text-blue-300"></i>
-</div>
-<div>
-<h3 class="text-xl font-bold text-blue-300">Irithyll del Valle Boreal</h3>
-<p class="text-gray-300">"El momento 'ella'" - un lugar sagrado donde la conexión con el fuego te da vida eterna.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Right side - Ponerla -->
-<div class="w-1/2 h-full flex flex-col items-center justify-center pl-8">
-<div class="bg-gray-800 rounded-lg p-6 shadow-lg w-full">
-<h2 class="text-3xl font-bold text-white mb-4 flex items-center">
-<i class="fas fa-bed text-red-400 mr-3"></i>
-                        Escenarios Mundanos
-                    </h2>
-<div class="space-y-4">
-<div class="location-card mundane-location bg-gray-700 bg-opacity-70 rounded p-4">
-<div class="flex items-center">
-<div class="icon-container bg-red-900 mr-4">
-<i class="fas fa-eye text-3xl text-red-300"></i>
-</div>
-<div>
-<h3 class="text-xl font-bold text-red-300">Esta Vista</h3>
-<p class="text-gray-300">Una perspectiva común que ofrece poco más que una experiencia ordinaria y repetitiva.</p>
-</div>
-</div>
-</div>
-<div class="location-card mundane-location bg-gray-700 bg-opacity-70 rounded p-4">
-<div class="flex items-center">
-<div class="icon-container bg-red-900 mr-4">
-<i class="fas fa-toilet text-3xl text-red-300"></i>
-</div>
-<div>
-<h3 class="text-xl font-bold text-red-300">El Baño de un Oxxo</h3>
-<p class="text-gray-300">Un entorno limitado y vulgar que carece de cualquier elemento épico o memorable.</p>
-</div>
-</div>
-</div>
-<div class="location-card mundane-location bg-gray-700 bg-opacity-70 rounded p-4">
-<div class="flex items-center">
-<div class="icon-container bg-red-900 mr-4">
-<i class="fas fa-clock text-3xl text-red-300"></i>
-</div>
-<div>
-<h3 class="text-xl font-bold text-red-300">Dos Minutos de Goce</h3>
-<p class="text-gray-300">Duración máxima de la experiencia, seguida de una demanda de recursos que interrumpe la inmersión.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Page number -->
-<div class="page-number">8/10</div>
-</div>
 
-</body></html>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="w-full h-full bg-[#111827] flex flex-col items-center justify-between p-10 relative">
+                    
+                    <div class="divider-vertical"></div>
+
+                    <div class="w-full text-center z-10">
+                        <h1 class="title text-6xl font-bold text-white mb-2">Escenarios y Paisajes</h1>
+                        <p class="text-2xl text-gray-400">Comparación visual entre entornos épicos y mundanos</p>
+                    </div>
+
+                    <div class="flex w-full px-8 items-center gap-16" style="height: 65vh; margin-bottom: 12px;">
+                        
+                        <div class="w-1/2 flex flex-col gap-3 h-full">
+                            <div class="space-y-3 flex-1">
+                                <div class="location-card epic-location bg-gray-800/60 rounded-xl p-5 shadow-lg flex items-center">
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-blue-300">Pico del Archidragón</h3>
+                                        <p class="text-gray-400 text-sm">Cima celestial donde el destino se decide en una batalla contra la leyenda.</p>
+                                    </div>
+                                    <img src="Imagenes/escenario_archidragon.png" alt="Pico del Archidragón" class="location-image location-image-right">
+                                </div>
+                                <div class="location-card epic-location bg-gray-800/60 rounded-xl p-5 shadow-lg flex items-center">
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-blue-300">Ciudad Anillada</h3>
+                                        <p class="text-gray-400 text-sm">El fin del mundo contenido en un anillo, lleno de desafíos y arquitectura imposible.</p>
+                                    </div>
+                                    <img src="Imagenes/escenario_ciudad.jpg" alt="Ciudad Anillada" class="location-image location-image-right">
+                                </div>
+                                <div class="location-card epic-location bg-gray-800/60 rounded-xl p-5 shadow-lg flex items-center">
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-blue-300">Irithyll del Valle Boreal</h3>
+                                        <p class="text-gray-400 text-sm">"El momento Ella" - Una postal gótica que redefine la belleza melancólica.</p>
+                                    </div>
+                                    <img src="Imagenes/escenario_irithyll.png" alt="Irithyll del Valle Boreal" class="location-image location-image-right">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-1/2 flex flex-col gap-3 h-full">
+                            <div class="space-y-3 flex-1">
+                                <div class="location-card mundane-location bg-gray-800/60 rounded-xl p-5 shadow-lg flex items-center">
+                                    <img src="Imagenes/escenario_comun.jpg" alt="Esta Vista" class="location-image location-image-left">
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-red-300">Esta Vista</h3>
+                                        <p class="text-gray-400 text-sm">Una perspectiva común, ordinaria y repetitiva que no cambia con el tiempo.</p>
+                                    </div>
+                                </div>
+                                <div class="location-card mundane-location bg-gray-800/60 rounded-xl p-5 shadow-lg flex items-center">
+                                    <img src="Imagenes/escenario_ikea.jpg" alt="El Baño de un Ikea" class="location-image location-image-left">
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-red-300">El Baño de un Ikea</h3>
+                                        <p class="text-gray-400 text-sm">Entorno limitado, vulgar y falto de cualquier elemento épico o memorable.</p>
+                                    </div>
+                                </div>
+                                <div class="location-card mundane-location bg-gray-800/60 rounded-xl p-5 shadow-lg flex items-center">
+                                    <img src="Imagenes/escenario_coche.jpg" alt="Asiento Trasero" class="location-image location-image-left">
+                                    <div class="flex-1">
+                                        <h3 class="text-xl font-bold text-red-300">Asiento Trasero</h3>
+                                        <p class="text-gray-400 text-sm">Diseñado para niños, no para épica. Posturas imposibles y cero banda sonora.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="w-full px-6 mb-4">
+                        <div class="bg-gray-800/40 border border-gray-700 rounded-xl p-4 text-center">
+                            <p class="text-xl text-gray-400 italic font-semibold">
+                                La inmersión requiere complejidad visual; la monotonía mata el interés.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="custom-page-number">8</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            embedded: true,
+            controls: false,
+            progress: false,
+            slideNumber: false,
+            center: false,
+            width: 1920,
+            height: 1080,
+            margin: 0,
+            minScale: 0.1,
+            maxScale: 2.0
+        });
+    </script>
+</body>
+</html>

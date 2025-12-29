@@ -4,127 +4,241 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Actualizaciones y Contenido</title>
+    
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <link href="styles.css" rel="stylesheet">
-    <script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
     <style>
+        :root { color-scheme: dark; }
+
+        /* Pantalla completa dentro del iframe */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #111827; /* bg-gray-900 */
+            overflow: hidden;
+        }
+
+        .reveal {
+            width: 100%;
+            height: 100%;
+        }
+
+        .reveal .slides {
+            width: 100% !important;
+            height: 100% !important;
+            inset: 0 !important;
+            transform: none !important;
+        }
+
+        .reveal .slides section {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilos específicos de tu contenido */
         .content-card {
-            height: 450px;
+            height: 520px; /* Ajustado para que quepa la cita inferior */
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .content-card:hover {
             transform: translateY(-5px);
+            border-color: rgba(255, 255, 255, 0.2);
         }
 
         .icon-container {
             height: 80px;
             width: 80px;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .dlc-pill {
             display: inline-block;
-            padding: 5px 12px;
+            padding: 6px 14px;
             margin: 5px;
-            border-radius: 15px;
+            border-radius: 20px;
             font-weight: bold;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .divider {
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            height: 60%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #374151, transparent);
+            transform: translateX(-50%);
+            z-index: 5;
+        }
+
+        .updates-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .updates-overlay i {
+            position: absolute;
+            color: rgba(148, 163, 184, 0.14);
+            font-size: 4rem;
+            animation: slowRotate 18s linear infinite;
+        }
+
+        .updates-overlay .icon-1 { top: 18%; left: 20%; animation-direction: normal; }
+        .updates-overlay .icon-2 { top: 32%; right: 18%; animation-direction: reverse; }
+        .updates-overlay .icon-3 { bottom: 22%; left: 28%; animation-direction: normal; }
+        .updates-overlay .icon-4 { bottom: 30%; right: 24%; animation-direction: reverse; }
+        .updates-overlay .icon-5 { top: 48%; left: 48%; animation-direction: normal; }
+
+        @keyframes slowRotate {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .update-image {
+            width: 200px;
+            max-width: 45%;
+            border-radius: 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+        }
+
+        .custom-page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            color: #4b5563;
+            font-family: sans-serif;
+            font-size: 1.2rem;
         }
     </style>
-
 </head>
 <body>
-    <div class="slide bg-gray-900 flex flex-col items-center justify-between">
-        <!-- Top section with title -->
-        <div class="w-full pt-10 pb-4 px-16 text-center">
-            <h1 class="title text-5xl font-bold text-white mb-2">Actualizaciones y Contenido</h1>
-            <p class="subtitle text-2xl text-gray-300">Comparación de expansión y evolución</p>
-        </div>
-        <!-- Middle section with comparison -->
-        <div class="flex w-full px-16 h-full relative">
-            <!-- Divider line -->
-            <div class="divider"></div>
-            <!-- Left side - Ponerla -->
-            <div class="w-1/2 h-full flex flex-col items-center justify-center pr-6">
-                <div class="content-card bg-gray-800 rounded-lg p-6 shadow-lg w-full">
-                    <div class="flex flex-col items-center">
-                        <div class="icon-container bg-red-900 mb-4">
-                            <i class="fas fa-sync-alt text-5xl text-red-300"></i>
+
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="w-full h-full bg-[#111827] flex flex-col items-center justify-between p-10 relative">
+                    <div class="updates-overlay">
+                        <i class="fas fa-sync-alt icon-1"></i>
+                        <i class="fas fa-exchange-alt icon-2"></i>
+                        <i class="fas fa-sync icon-3"></i>
+                        <i class="fas fa-redo icon-4"></i>
+                        <i class="fas fa-sync-alt icon-5"></i>
+                    </div>
+
+                    <div class="w-full text-center z-10 relative">
+                        <h1 class="title text-5xl font-bold text-white mb-2">Actualizaciones y Contenido</h1>
+                        <p class="text-2xl text-gray-400">Comparación de expansión y evolución</p>
+                    </div>
+
+                    <div class="flex w-full h-full relative my-6 px-10">
+                        <div class="divider"></div>
+                        
+                        <div class="w-1/2 flex flex-col items-center justify-center pr-10">
+                            <div class="content-card bg-gray-800/50 rounded-xl p-8 shadow-2xl w-full relative z-10">
+                                <div class="flex flex-col items-center">
+                                    <div class="icon-container bg-red-900/40 mb-6">
+                                        <i class="fas fa-sync-alt text-4xl text-red-300"></i>
+                                    </div>
+                                    <h2 class="text-3xl font-bold text-white mb-4">Ponerla</h2>
+                                    <div class="flex items-center mb-6 text-red-500">
+                                        <i class="fas fa-redo-alt text-2xl mr-3"></i>
+                                        <span class="text-xl font-bold">Gameplay Estancado</span>
+                                    </div>
+                                    <div class="w-full flex items-start gap-6">
+                                        <ul class="text-gray-300 text-xl leading-relaxed space-y-4 flex-1">
+                                            <li class="flex items-start"><i class="fas fa-times-circle text-red-500 mt-2 mr-3 text-sm"></i>Gameplay milenario sin parches</li>
+                                            <li class="flex items-start"><i class="fas fa-times-circle text-red-500 mt-2 mr-3 text-sm"></i>Nunca recibió expansiones oficiales</li>
+                                            <li class="flex items-start"><i class="fas fa-times-circle text-red-500 mt-2 mr-3 text-sm"></i>Loop predecible (zeta zeta)</li>
+                                        </ul>
+                                        <img src="Imagenes/updates_ponerla.png" alt="Actualizaciones Ponerla" class="update-image">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <h2 class="text-3xl font-bold text-white mb-3">Ponerla</h2>
-                        <div class="flex items-center justify-center mb-3">
-                            <i class="fas fa-redo-alt text-3xl text-red-500 mr-2"></i>
-                            <span class="text-xl font-bold text-red-500">Gameplay Estancado</span>
+
+                        <div class="w-1/2 flex flex-col items-center justify-center pl-10">
+                            <div class="content-card bg-gray-800/50 rounded-xl p-8 shadow-2xl w-full relative z-10">
+                                <div class="flex flex-col items-center">
+                                    <div class="icon-container bg-blue-900/40 mb-6">
+                                        <i class="fas fa-expand-alt text-4xl text-blue-300"></i>
+                                    </div>
+                                    <h2 class="text-3xl font-bold text-white mb-4">Dark Souls 3</h2>
+                                    <div class="flex items-center mb-6 text-blue-500">
+                                        <i class="fas fa-plus-circle text-2xl mr-3"></i>
+                                        <span class="text-xl font-bold">Contenido Rico</span>
+                                    </div>
+                                    <div class="w-full flex items-start gap-6">
+                                        <div class="flex-1 space-y-5">
+                                            <div class="flex flex-wrap gap-3 items-center">
+                                                <span class="dlc-pill bg-blue-900/60 text-blue-100">Ashes of Ariandel <span class="text-blue-400 ml-1">~5h</span></span>
+                                                <span class="dlc-pill bg-blue-900/60 text-blue-100">Ringed City <span class="text-blue-400 ml-1">~9h</span></span>
+                                            </div>
+                                            <ul class="text-gray-300 text-xl leading-relaxed space-y-4">
+                                                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-2 mr-3 text-sm"></i>Updates constantes y pulido técnico</li>
+                                                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-2 mr-3 text-sm"></i>Narrativa expandida con lore profundo</li>
+                                                <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-2 mr-3 text-sm"></i>Plot twist legendario con Gael</li>
+                                            </ul>
+                                        </div>
+                                        <img src="Imagenes/updates_darksouls.png" alt="Actualizaciones Dark Souls" class="update-image self-start mt-1">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <ul class="text-gray-300 text-xl space-y-3 w-full">
-                            <li class="flex items-start">
-                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
-                                <span>Gameplay milenario sin actualizaciones</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
-                                <span>Nunca recibió mejoras ni expansiones</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
-                                <span>Siempre el mismo loop predecible</span>
-                            </li>
-                        </ul>
-                        <div class="mt-4 p-3 bg-gray-900 rounded-lg w-full">
-                            <p class="text-gray-300 italic text-center">
-                                "Un pajarito conoce a una pajarita, dos minutos de goce carnal después de que se gusten y luego demanda de alimentos, muy zeta zeta."
+                    </div>
+
+                    <div class="w-full px-10 mb-6 relative z-10">
+                        <div class="w-full bg-gray-800/60 border border-gray-700 rounded-xl p-6 text-center">
+                            <p class="text-2xl text-yellow-400 font-bold italic">
+                                "Dark Souls 3: <span class="text-blue-400">punto para Dark Souls</span>"
                             </p>
                         </div>
                     </div>
+
+                    <div class="custom-page-number z-10">3</div>
                 </div>
-            </div>
-            <!-- Right side - Dark Souls 3 -->
-            <div class="w-1/2 h-full flex flex-col items-center justify-center pl-6">
-                <div class="content-card bg-gray-800 rounded-lg p-6 shadow-lg w-full">
-                    <div class="flex flex-col items-center">
-                        <div class="icon-container bg-blue-900 mb-4">
-                            <i class="fas fa-expand-alt text-5xl text-blue-300"></i>
-                        </div>
-                        <h2 class="text-3xl font-bold text-white mb-3">Dark Souls 3</h2>
-                        <div class="flex items-center justify-center mb-3">
-                            <i class="fas fa-plus-circle text-3xl text-blue-500 mr-2"></i>
-                            <span class="text-xl font-bold text-blue-500">Contenido Rico</span>
-                        </div>
-                        <div class="flex flex-wrap justify-center mb-4">
-                            <span class="dlc-pill bg-blue-800 text-white">Ashes of Ariandel <span class="text-blue-300">~5h</span></span>
-                            <span class="dlc-pill bg-blue-800 text-white">Ringed City <span class="text-blue-300">8-9h</span></span>
-                        </div>
-                        <ul class="text-gray-300 text-xl space-y-3 w-full">
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Constantes actualizaciones y expansiones</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Horas adicionales de juego y narrativa</span>
-                            </li>
-                            <li class="flex items-start">
-                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <span>Plot twist brutal (Gael)</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            </section>
         </div>
-        <!-- Bottom section with conclusion -->
-        <div class="w-full px-16 pb-10">
-            <div class="bg-gray-800 bg-opacity-70 rounded-lg p-4 text-center">
-                <p class="text-2xl text-yellow-400 font-bold italic">"Dark Souls 3: <span class="text-blue-400">punto para Dark Souls</span>"</p>
-            </div>
-        </div>
-        <!-- Page number -->
-        <div class="page-number">3/10</div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
     <script>
-        // No data visualization needed for this slide
+        Reveal.initialize({
+            embedded: true,
+            controls: false,
+            progress: false,
+            slideNumber: false,
+            center: false,
+            width: 1920,
+            height: 1080,
+            margin: 0,
+            minScale: 0.1,
+            maxScale: 2.0
+        });
     </script>
-
 </body>
 </html>

@@ -1,11 +1,54 @@
-<!DOCTYPE html><html lang="es" style="--viewport-height: 9.25px;"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Dark Souls 3 vs. Ponerla</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<link href="styles.css" rel="stylesheet">
-<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
-<style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Dark Souls 3 vs. Ponerla</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+    <style>
+        :root { color-scheme: dark; }
+
+        /* Reset para pantalla completa dentro del iframe */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #111827; /* bg-gray-900 */
+            overflow: hidden;
+        }
+
+        .reveal {
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        .reveal .slides {
+            width: 100% !important;
+            height: 100% !important;
+            inset: 0 !important;
+            transform: none !important;
+        }
+
+        .reveal .slides section {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilos específicos del contenido */
         .gael-image {
             filter: brightness(0.8) contrast(1.2);
         }
@@ -15,62 +58,109 @@
             border: 2px solid #8B0000;
             box-shadow: 0 0 20px rgba(139, 0, 0, 0.5);
         }
-</style>
 
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.bottom-0{bottom:0px}.left-0{left:0px}.right-0{right:0px}.z-10{z-index:10}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mr-2{margin-right:0.5rem}.flex{display:flex}.h-full{height:100%}.w-1\/2{width:50%}.w-full{width:100%}.flex-col{flex-direction:column}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.rounded-lg{border-radius:0.5rem}.rounded-b-lg{border-bottom-right-radius:0.5rem;border-bottom-left-radius:0.5rem}.bg-black{--tw-bg-opacity:1;background-color:rgb(0 0 0 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.bg-opacity-70{--tw-bg-opacity:0.7}.object-cover{object-fit:cover}.p-3{padding:0.75rem}.p-4{padding:1rem}.px-16{padding-left:4rem;padding-right:4rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-4{padding-bottom:1rem}.pt-10{padding-top:2.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-5xl{font-size:3rem;line-height:1}.text-6xl{font-size:3.75rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.italic{font-style:italic}.text-gray-300{--tw-text-opacity:1;color:rgb(209 213 219 / var(--tw-text-opacity, 1))}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-red-500{--tw-text-opacity:1;color:rgb(239 68 68 / var(--tw-text-opacity, 1))}.text-red-600{--tw-text-opacity:1;color:rgb(220 38 38 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-yellow-600{--tw-text-opacity:1;color:rgb(202 138 4 / var(--tw-text-opacity, 1))}</style></head>
-<body class="">
-<div class="slide bg-gray-900 flex flex-col items-center justify-between">
-<!-- Top section with title -->
-<div class="w-full pt-10 pb-4 px-16 text-center z-10">
-<h1 class="title text-5xl font-bold text-white mb-2">Dark Souls 3 vs. Ponerla</h1>
-<h2 class="subtitle text-3xl text-red-500 mb-1">¿Realmente ponerla es mejor?</h2>
-<p class="text-xl text-gray-300 italic" style="">Un análisis totalmente objetivo por un profesional en la materia.</p>
-</div>
-<!-- Middle section with comparison -->
-<div class="flex w-full h-full relative">
-<!-- Divider line -->
-<div class="divider"></div>
-<!-- Left side - Dark Souls 3 -->
-<div class="w-1/2 h-full flex items-center justify-center p-4">
-<div class="relative w-full h-full flex items-center justify-center">
-<img alt="Slave Knight Gael" class="gael-image object-cover h-full rounded-lg" src="https://picture-search.skywork.ai/aippt/image/sheet/cfa42d95c5569f5c10b6bf312afb610e_crop.jpg">
-<div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-70 p-3 rounded-b-lg">
-<p class="text-white text-center text-lg font-bold" style=""></p><p class="" style=""><span style="color: rgb(255, 255, 255); font-weight: bold;" class="">Dark Souls III is an action role-playing video game developed by FromSoftware and published by Bandai Namco Entertainment for PlayStation 4, Xbox One, and Microsoft Windows. It is the third and final instalment in the Souls series, released in Japan on 24 March 2016 and worldwide in April of the same year.</span></p><p></p>
-</div>
-</div>
-</div>
-<!-- Right side - Ponerla -->
-<div class="w-1/2 h-full flex items-center justify-center p-4">
-<div class="w-full h-full flex flex-col items-center justify-center rounded-lg ponerla-symbol">
-<div class="text-6xl text-red-600 mb-4">
-<i class="fas fa-heart-broken"></i>
-</div>
-<div class="text-2xl text-white font-bold mb-2">Ponerla</div>
-<div class="text-lg text-gray-300 text-center px-6">
-<p class="" style="">sex</p>
+        .divider {
+            position: absolute;
+            left: 50%;
+            top: 15%;
+            height: 70%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #4b5563, transparent);
+            transform: translateX(-50%);
+            z-index: 5;
+        }
 
+        .subtitle-custom {
+            color: #ef4444 !important;
+            font-size: 1.65rem !important;
+            text-transform: none !important;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 600;
+        }
 
-</div>
-</div>
-</div>
-</div>
-<!-- Bottom section with date -->
-<div class="w-full py-4 px-16 flex justify-between items-center z-10">
+        .custom-page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            color: #4b5563;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
 
-<div class="text-xl text-yellow-600 font-bold">
-<i class="fas fa-fire-alt mr-2"></i>
-                Análisis Épico
-            </div>
-            <!-- Page number -->
-<div class="page-number">1/10</div>
-</div>
-</div>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="w-full h-full bg-[#111827] flex flex-col items-center justify-between p-10 relative">
+                    
+                    <div class="w-full text-center z-10">
+                        <h1 class="title text-6xl font-bold text-white mb-2">Dark Souls 3 vs. Ponerla</h1>
+                        <h2 class="subtitle-custom mb-1">¿Realmente ponerla es mejor?</h2>
+                        <p class="text-xl text-gray-400 italic">Un análisis totalmente objetivo por un profesional en la materia.</p>
+                    </div>
 
+                    <div class="flex w-full h-full relative my-4">
+                        <div class="divider"></div>
+                        
+                        <div class="w-1/2 h-full flex items-center justify-center p-6">
+                            <div class="relative w-full h-full flex items-center justify-center">
+                                <img alt="Slave Knight Gael" class="gael-image object-cover h-full w-full rounded-xl shadow-2xl" src="https://picture-search.skywork.ai/aippt/image/sheet/cfa42d95c5569f5c10b6bf312afb610e_crop.jpg">
+                                <div class="absolute bottom-0 left-0 right-0 bg-black/80 px-7 py-12 rounded-b-xl border-t border-gray-800">
+                                    <p class="text-gray-200 text-center text-lg leading-8">
+                                        Dark Souls III is an action role-playing video game developed by FromSoftware and published by Bandai Namco Entertainment for PlayStation 4, Xbox One, and Microsoft Windows. It is the third and final instalment in the Souls series, released in Japan on 24 March 2016 and worldwide in April of the same year.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
 
-<script data-sk-script-id="viewportHeightScript">
-      (function() {
-        var viewportHeight = window.top === window ? '1vh' : '9.25px';
-        document.documentElement.style.setProperty('--viewport-height', viewportHeight);
-      })();
+                        <div class="w-1/2 h-full flex items-center justify-center p-6">
+                            <div class="w-full h-full flex flex-col items-center justify-center rounded-xl ponerla-symbol p-8">
+                                <div class="mb-6">
+                                    <img src="Imagenes/SEXO-4x.gif" alt="Animación sexo" class="w-40 h-40 object-contain">
+                                </div>
+
+                                <div class="text-4xl text-white font-bold mb-4">Ponerla</div>
+                                <div class="text-xl text-gray-400 text-center italic">
+                                    "Acto de intimidad física y emocional, generalmente con fines de placer, reproducción o conexión"
+                                </div>
+                                <div class="text-xl text-gray-400 text-center italic mt-3">
+                                    "Pito en chocho"
+                                </div>
+                                <div class="text-xl text-gray-400 text-center italic mt-3">
+                                    "SEX"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full flex justify-between items-center z-10">
+                        <div class="text-2xl text-yellow-600 font-bold flex items-center">
+                            <i class="fas fa-fire-alt mr-3"></i>
+                            Análisis Épico
+                        </div>
+                        <div class="custom-page-number">1</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            embedded: true,
+            controls: false,
+            progress: false,
+            slideNumber: false, 
+            center: false,
+            width: 1920,
+            height: 1080,
+            margin: 0,
+            minScale: 0.1,
+            maxScale: 2.0
+        });
     </script>
-</body></html>
+</body>
+</html>

@@ -1,136 +1,242 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Apartado Musical</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<link href="styles.css" rel="stylesheet">
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
-<style>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Apartado Musical</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <link href="styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+    <style>
+        :root { color-scheme: dark; }
+
+        /* Pantalla completa para iframe */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            overflow: hidden;
+        }
+
+        .reveal {
+            width: 100%;
+            height: 100%;
+        }
+
+        .reveal .slides {
+            width: 100% !important;
+            height: 100% !important;
+            inset: 0 !important;
+            transform: none !important;
+        }
+
+        .reveal .slides section {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilos de las Cartas Musicales */
         .music-card {
-            height: 450px;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(31, 41, 55, 0.6);
+            backdrop-filter: blur(10px);
         }
 
         .music-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-15px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
         .icon-container {
-            height: 80px;
-            width: 80px;
+            height: 90px;
+            width: 90px;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .music-note {
             position: absolute;
-            opacity: 0.1;
-            font-size: 120px;
+            pointer-events: none;
             color: white;
-            z-index: 0;
+            z-index: 1;
         }
-</style>
+
+        .divider {
+            position: absolute;
+            left: 50%;
+            top: 20%;
+            height: 60%;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #374151, transparent);
+            transform: translateX(-50%);
+        }
+
+        .custom-page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            color: #4b5563;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+            z-index: 20;
+        }
+
+        .update-image {
+            width: 200px;
+            max-width: 45%;
+            border-radius: 16px;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 26px rgba(0, 0, 0, 0.35);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .update-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.4);
+        }
+    </style>
 </head>
 <body>
-<div class="slide bg-gray-900 flex flex-col items-center justify-between">
-<!-- Background music notes for visual effect -->
-<div id="music-notes"></div>
-<!-- Top section with title -->
-<div class="w-full pt-10 pb-4 px-16 text-center z-10">
-<h1 class="title text-5xl font-bold text-white mb-2">Apartado Musical</h1>
-<p class="subtitle text-2xl text-gray-300">Contraste en la experiencia auditiva</p>
-</div>
-<!-- Middle section with comparison -->
-<div class="flex w-full px-16 pb-6 h-full relative z-10">
-<!-- Divider line -->
-<div class="divider"></div>
-<!-- Left side - Ponerla -->
-<div class="w-1/2 h-full flex flex-col items-center justify-center pr-8">
-<div class="music-card bg-gray-800 rounded-lg p-6 shadow-lg w-full">
-<div class="flex flex-col items-center">
-<div class="icon-container bg-red-900 mb-6">
-<i class="fas fa-volume-xmark text-5xl text-red-300"></i>
-</div>
-<h2 class="text-3xl font-bold text-white mb-4">Ponerla</h2>
-<div class="flex items-center justify-center mb-4">
-<i class="fas fa-music text-3xl text-red-500 mr-3"></i>
-<span class="text-2xl font-bold text-red-500">Sin armonía</span>
-</div>
-<ul class="text-gray-300 text-xl space-y-4">
-<li class="flex items-start">
-<i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
-<span>Mejor en silencio</span>
-</li>
-<li class="flex items-start">
-<i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
-<span>Pokémon de fondo funciona mejor</span>
-</li>
-<li class="flex items-start">
-<i class="fas fa-times-circle text-red-500 mt-1 mr-2"></i>
-<span>Ausencia total de composiciones</span>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<!-- Right side - Dark Souls 3 -->
-<div class="w-1/2 h-full flex flex-col items-center justify-center pl-8">
-<div class="music-card bg-gray-800 rounded-lg p-6 shadow-lg w-full">
-<div class="flex flex-col items-center">
-<div class="icon-container bg-blue-900 mb-6">
-<i class="fas fa-music text-5xl text-blue-300"></i>
-</div>
-<h2 class="text-3xl font-bold text-white mb-4">Dark Souls 3</h2>
-<div class="flex items-center justify-center mb-4">
-<i class="fas fa-award text-3xl text-yellow-500 mr-3"></i>
-<span class="text-2xl font-bold text-yellow-500">Música épica</span>
-</div>
-<ul class="text-gray-300 text-xl space-y-4">
-<li class="flex items-start">
-<i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-<span>Hermana Friede</span>
-</li>
-<li class="flex items-start">
-<i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-<span>Caminantes del Abismo</span>
-</li>
-<li class="flex items-start">
-<i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-<span>Composiciones memorables</span>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<!-- Bottom section with conclusion -->
-<div class="w-full px-16 pb-10 z-10">
-<div class="bg-gray-800 bg-opacity-70 rounded-lg p-4 text-center">
-<p class="text-2xl text-yellow-400 font-bold italic">"La experiencia auditiva define la inmersión"</p>
-</div>
-</div>
-<!-- Page number -->
-<div class="page-number">7/10</div>
-</div>
-<script>
-        // Create floating music notes for background effect
-        const musicNotes = d3.select("#music-notes");
-        
-        for (let i = 0; i < 10; i++) {
-            const left = Math.random() * 1280;
-            const top = Math.random() * 720;
-            const opacity = Math.random() * 0.05 + 0.05;
-            const fontSize = Math.random() * 30 + 30;
-            
-            musicNotes.append("i")
-                .attr("class", "fas fa-music music-note")
-                .style("left", `${left}px`)
-                .style("top", `${top}px`)
-                .style("opacity", opacity)
-                .style("font-size", `${fontSize}px`);
-        }
-    </script>
 
-</body></html>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="w-full h-full bg-[#111827] flex flex-col items-center justify-between p-10 relative">
+                    
+                    <div id="music-notes" class="absolute inset-0"></div>
+
+                    <div class="w-full text-center z-10">
+                        <h1 class="title text-6xl font-bold text-white mb-2">Apartado Musical</h1>
+                        <p class="text-2xl text-gray-400">Contraste en la experiencia auditiva</p>
+                    </div>
+
+                    <div class="flex w-full h-full relative z-10 px-10 items-center">
+                        <div class="divider"></div>
+                        
+                        <div class="w-1/2 flex flex-col items-center pr-12">
+                            <div class="music-card rounded-2xl p-10 w-full shadow-2xl">
+                                <div class="flex flex-col items-center">
+                                    <div class="icon-container bg-red-900/40 mb-8 border border-red-800/30">
+                                        <i class="fas fa-volume-xmark text-4xl text-red-400"></i>
+                                    </div>
+                                    <h2 class="text-4xl font-bold text-white mb-6">Ponerla</h2>
+                                    <div class="flex items-center mb-8 bg-red-950/30 px-6 py-2 rounded-full border border-red-900/50">
+                                        <i class="fas fa-music text-2xl text-red-500 mr-4"></i>
+                                        <span class="text-xl font-bold text-red-400 uppercase tracking-widest">Sin Armonía</span>
+                                    </div>
+                                    <div class="w-full flex items-start gap-6">
+                                        <ul class="text-gray-300 text-xl space-y-6 flex-1">
+                                            <li class="flex items-center"><i class="fas fa-times-circle text-red-500 mr-4"></i>Mejor en silencio absoluto</li>
+                                            <li class="flex items-center"><i class="fas fa-times-circle text-red-500 mr-4"></i>OST de Pokémon es más útil</li>
+                                            <li class="flex items-center"><i class="fas fa-times-circle text-red-500 mr-4"></i>0 composiciones memorables</li>
+                                        </ul>
+                                        <a href="https://youtu.be/YDXklfHuw-s" target="_blank">
+                                            <img src="Imagenes/musica_ponerla.png" alt="Música Ponerla" class="update-image">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="w-1/2 flex flex-col items-center pl-12">
+                            <div class="music-card rounded-2xl p-10 w-full shadow-2xl">
+                                <div class="flex flex-col items-center">
+                                    <div class="icon-container bg-blue-900/40 mb-8 border border-blue-800/30">
+                                        <i class="fas fa-music text-4xl text-blue-400"></i>
+                                    </div>
+                                    <h2 class="text-4xl font-bold text-white mb-6">Dark Souls 3</h2>
+                                    <div class="flex items-center mb-8 bg-blue-950/30 px-6 py-2 rounded-full border border-blue-900/50">
+                                        <i class="fas fa-award text-2xl text-yellow-500 mr-4"></i>
+                                        <span class="text-xl font-bold text-yellow-500 uppercase tracking-widest">Música Épica</span>
+                                    </div>
+                                    <div class="w-full flex items-start gap-6">
+                                        <ul class="text-gray-300 text-xl space-y-6 flex-1">
+                                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-4"></i>Hermana Friede (Obra maestra)</li>
+                                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-4"></i>Vigilantes del Abismo</li>
+                                            <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-4"></i>Composiciones que erizan la piel</li>
+                                        </ul>
+                                        <a href="https://youtu.be/Ic2KJjSZumw?list=RDIc2KJjSZumw&t=125" target="_blank">
+                                            <img src="Imagenes/musica_darksouls.png" alt="Música Dark Souls" class="update-image">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-full mb-6 z-10">
+                        <div class="bg-gray-800/60 border border-gray-700 rounded-xl p-5 text-center">
+                            <p class="text-2xl text-yellow-400 font-bold italic">
+                                "La experiencia auditiva define la inmersión: Dark Souls gana por goleada."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="custom-page-number">7</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            embedded: true,
+            controls: false,
+            progress: false,
+            slideNumber: false,
+            center: false,
+            width: 1920,
+            height: 1080,
+            margin: 0,
+            minScale: 0.1,
+            maxScale: 2.0
+        });
+
+        // Fondo de notas musicales con D3
+        const drawNotes = () => {
+            const container = d3.select("#music-notes");
+            const width = 1920;
+            const height = 1080;
+            
+            for (let i = 0; i < 15; i++) {
+                const x = Math.random() * width;
+                const y = Math.random() * height;
+                const opacity = Math.random() * 0.08 + 0.02;
+                const size = Math.random() * 60 + 40;
+                const rotation = Math.random() * 45 - 22;
+                
+                container.append("i")
+                    .attr("class", "fas fa-music music-note")
+                    .style("left", `${x}px`)
+                    .style("top", `${y}px`)
+                    .style("opacity", opacity)
+                    .style("font-size", `${size}px`)
+                    .style("transform", `rotate(${rotation}deg)`);
+            }
+        };
+
+        drawNotes();
+    </script>
+</body>
+</html>

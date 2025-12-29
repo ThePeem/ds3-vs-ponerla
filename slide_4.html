@@ -1,117 +1,220 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>El Gameplay de Ponerla</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<link href="styles.css" rel="stylesheet">
-<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
-<style>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>El Gameplay de Ponerla</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+    <style>
+        :root { color-scheme: dark; }
+
+        /* Pantalla completa para iframe */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            overflow: hidden;
+        }
+
+        .reveal {
+            width: 100%;
+            height: 100%;
+        }
+
+        .reveal .slides {
+            width: 100% !important;
+            height: 100% !important;
+            inset: 0 !important;
+            transform: none !important;
+        }
+
+        .reveal .slides section {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilos de las tarjetas del ciclo */
         .cycle-card {
             transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(31, 41, 55, 0.8); /* gray-800 con opacidad */
         }
 
         .cycle-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            border-color: rgba(239, 68, 68, 0.3);
+            background: rgba(31, 41, 55, 1);
         }
 
-        .icon-container {
-            height: 80px;
-            width: 80px;
-            border-radius: 50%;
+        .cycle-image {
+            width: 100%;
+            max-width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+            margin-bottom: 16px;
         }
 
         .cycle-arrow {
-            position: absolute;
-            font-size: 24px;
-            color: #9CA3AF;
+            font-size: 2rem;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 40px;
         }
-</style>
 
+        .sleep-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .sleep-overlay i {
+            position: absolute;
+            color: rgba(148, 163, 184, 0.14);
+            font-size: 4.2rem;
+            animation: drift 16s ease-in-out infinite;
+        }
+
+        .sleep-overlay .icon-1 { top: 18%; left: 22%; animation-delay: 0s; }
+        .sleep-overlay .icon-2 { top: 35%; right: 18%; animation-delay: 3s; }
+        .sleep-overlay .icon-3 { bottom: 22%; left: 28%; animation-delay: 6s; }
+        .sleep-overlay .icon-4 { bottom: 30%; right: 24%; animation-delay: 9s; }
+        .sleep-overlay .icon-5 { top: 48%; left: 48%; animation-delay: 12s; }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+            50% { transform: translateY(-14px) rotate(8deg); opacity: 1; }
+        }
+
+        .custom-page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            color: #4b5563;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+        }
+    </style>
 </head>
 <body>
-<div class="slide bg-gray-900 flex flex-col items-center justify-between">
-<!-- Top section with title -->
-<div class="w-full pt-10 pb-4 px-16 text-center">
-<h1 class="title text-5xl font-bold text-white mb-2">El Gameplay de Ponerla</h1>
-<p class="subtitle text-2xl text-gray-300">Ciclo repetitivo y su estructura</p>
-</div>
-<!-- Middle section with cycle visualization -->
-<div class="w-full px-16 pb-6 flex flex-col items-center justify-center">
-<div class="relative w-full flex justify-center items-center mb-6">
-<div class="w-20 h-20 bg-red-900 rounded-full flex items-center justify-center">
-<i class="fas fa-sync-alt text-3xl text-red-300 animate-spin" style="animation-duration: 8s;"></i>
-</div>
-<div class="absolute bg-gray-800 bg-opacity-70 rounded-lg p-3 shadow-lg">
-<p class="text-xl text-yellow-400 font-bold italic">"Un pajarito conoce a una pajarita, dos minutos de goce carnal, luego demanda de alimentos, muy zeta zeta."</p>
-</div>
-</div>
-<!-- Cycle stages -->
-<div class="flex w-full justify-between items-center px-8 relative">
-<!-- Stage 1: Casual Encounter -->
-<div class="cycle-card bg-gray-800 rounded-lg p-5 shadow-lg w-64 z-10">
-<div class="flex flex-col items-center">
-<div class="icon-container bg-blue-900 mb-4">
-<i class="fas fa-users text-4xl text-blue-300"></i>
-</div>
-<h2 class="text-2xl font-bold text-white mb-2">1. Encuentro Casual</h2>
-<p class="text-gray-300 text-center">Fase inicial donde se establece una conexión superficial sin compromiso.</p>
-</div>
-</div>
-<!-- Arrow 1 -->
-<div class="cycle-arrow" style="top: 40px; left: 30%;">
-<i class="fas fa-chevron-right text-gray-500"></i>
-</div>
-<!-- Stage 2: Brief Pleasure -->
-<div class="cycle-card bg-gray-800 rounded-lg p-5 shadow-lg w-64 z-10">
-<div class="flex flex-col items-center">
-<div class="icon-container bg-purple-900 mb-4">
-<i class="fas fa-bolt text-4xl text-purple-300"></i>
-</div>
-<h2 class="text-2xl font-bold text-white mb-2">2. Goce Breve</h2>
-<p class="text-gray-300 text-center">Intenso pero efímero, un pico de interacción que no deja rastro.</p>
-</div>
-</div>
-<!-- Arrow 2 -->
-<div class="cycle-arrow" style="top: 40px; left: 55%;">
-<i class="fas fa-chevron-right text-gray-500"></i>
-</div>
-<!-- Stage 3: Resource Demand -->
-<div class="cycle-card bg-gray-800 rounded-lg p-5 shadow-lg w-64 z-10">
-<div class="flex flex-col items-center">
-<div class="icon-container bg-red-900 mb-4">
-<i class="fas fa-hand-holding-usd text-4xl text-red-300"></i>
-</div>
-<h2 class="text-2xl font-bold text-white mb-2">3. Demanda de Recursos</h2>
-<p class="text-gray-300 text-center">Tras el clímax, surge la necesidad de inversión emocional, temporal o material.</p>
-</div>
-</div>
-<!-- Arrow 3 -->
-<div class="cycle-arrow" style="top: 40px; left: 80%;">
-<i class="fas fa-chevron-right text-gray-500"></i>
-</div>
-<!-- Stage 4: Infinite Loop -->
-<div class="cycle-card bg-gray-800 rounded-lg p-5 shadow-lg w-64 z-10">
-<div class="flex flex-col items-center">
-<div class="icon-container bg-yellow-900 mb-4">
-<i class="fas fa-redo-alt text-4xl text-yellow-300"></i>
-</div>
-<h2 class="text-2xl font-bold text-white mb-2">4. Loop Infinito</h2>
-<p class="text-gray-300 text-center">El ciclo tiende a repetirse con pocas variaciones, sin progresión real.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Bottom section with conclusion -->
-<div class="w-full px-16 pb-10">
-<div class="bg-gray-800 bg-opacity-70 rounded-lg p-4 text-center">
-<p class="text-xl text-yellow-400 font-bold">Estructura simplificada y transaccional que contrasta con la riqueza narrativa de los videojuegos.</p>
-</div>
-</div>
-<!-- Page number -->
-<div class="page-number">4/10</div>
-</div>
 
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="w-full h-full bg-[#111827] flex flex-col items-center justify-between p-10 relative">
+                    <div class="sleep-overlay">
+                        <i class="fas fa-bed icon-1"></i>
+                        <i class="fas fa-mug-hot icon-2"></i>
+                        <i class="fas fa-moon icon-3"></i>
+                        <i class="fas fa-bed icon-4"></i>
+                        <i class="fas fa-mug-hot icon-5"></i>
+                    </div>
+
+                    <div class="w-full text-center relative z-10">
+                        <h1 class="title title text-6xl font-bold text-white mb-2">El Gameplay de Ponerla</h1>
+                        <p class="text-2xl text-gray-400 italic">Ciclo repetitivo y su estructura</p>
+                    </div>
+
+                    <div class="w-full px-10 mt-2 relative z-10">
+                        <div class="w-full bg-gray-800/80 border border-gray-700 rounded-xl p-6 text-center shadow-2xl">
+                            <p class="text-2xl text-yellow-300 font-semibold italic">
+                                "Un pajarito conoce a una pajarita, dos minutos de goce carnal, luego demanda de alimentos, muy zeta zeta."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex w-full justify-between items-stretch gap-2 px-6 relative z-10">
+                        
+                        <div class="cycle-card rounded-xl p-6 flex-1 shadow-lg">
+                            <div class="flex flex-col items-center text-center">
+                                <img src="Imagenes/gameplay_encuentro.jpg" alt="Encuentro" class="cycle-image">
+                                <h3 class="text-lg font-semibold text-white mb-2">1. Encuentro</h3>
+                                <p class="text-base text-gray-300 leading-relaxed">Fase inicial: conexión superficial sin parches de contenido.</p>
+                            </div>
+                        </div>
+
+                        <div class="cycle-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                        <div class="cycle-card rounded-xl p-6 flex-1 shadow-lg">
+                            <div class="flex flex-col items-center text-center">
+                                <img src="Imagenes/gameplay_goce.jpg" alt="Goce breve" class="cycle-image">
+                                <h3 class="text-lg font-semibold text-white mb-2">2. Goce Breve</h3>
+                                <p class="text-base text-gray-300 leading-relaxed">Pico de interacción efímero. Gameplay de 2 minutos.</p>
+                            </div>
+                        </div>
+
+                        <div class="cycle-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                        <div class="cycle-card rounded-xl p-6 flex-1 shadow-lg">
+                            <div class="flex flex-col items-center text-center">
+                                <img src="Imagenes/gameplay_demanda.png" alt="Demanda" class="cycle-image">
+                                <h3 class="text-lg font-semibold text-white mb-2">3. Demanda</h3>
+                                <p class="text-base text-gray-300 leading-relaxed">Post-clímax: inversión emocional o de recursos (alimentación).</p>
+                            </div>
+                        </div>
+
+                        <div class="cycle-arrow"><i class="fas fa-chevron-right"></i></div>
+
+                        <div class="cycle-card rounded-xl p-6 flex-1 shadow-lg">
+                            <div class="flex flex-col items-center text-center">
+                                <img src="Imagenes/gameplay_zzz.gif" alt="Loop Zeta Zeta" class="cycle-image">
+                                <h3 class="text-lg font-semibold text-white mb-2">4. LOOP ZZ</h3>
+                                <p class="text-base text-gray-300 leading-relaxed">Reinicio sin progresión real. Estancamiento absoluto.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="w-full px-10 mb-4 relative z-10">
+                        <div class="w-full bg-gray-800/50 border border-gray-700 rounded-xl p-5 text-center">
+                            <p class="text-xl text-yellow-300">
+                                Estructura simplificada que contrasta con la <span class="text-blue-400 font-bold">riqueza narrativa</span> de FromSoftware.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="custom-page-number relative z-10">4</div>
+
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            embedded: true,
+            controls: false,
+            progress: false,
+            slideNumber: false,
+            center: false,
+            width: 1920,
+            height: 1080,
+            margin: 0,
+            minScale: 0.1,
+            maxScale: 2.0
+        });
+    </script>
 </body>
 </html>

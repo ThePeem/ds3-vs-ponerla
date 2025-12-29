@@ -1,138 +1,269 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="utf-8">
-<meta content="width=device-width, initial-scale=1.0" name="viewport">
-<title>Personajes en Dark Souls 3</title>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-<link href="styles.css" rel="stylesheet">
-<script src="https://picture-search.skywork.ai/aippt/static/tailwindcss.com"></script>
-<style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Personajes en Dark Souls 3</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/theme/black.css">
+
+    <style>
+        :root { color-scheme: dark; }
+
+        /* Pantalla completa para iframe */
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #111827;
+            overflow: hidden;
+        }
+
+        .reveal {
+            width: 100%;
+            height: 100%;
+        }
+
+        .reveal .slides {
+            width: 100% !important;
+            height: 100% !important;
+            inset: 0 !important;
+            transform: none !important;
+        }
+
+        .reveal .slides section {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            padding: 0 !important;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Estilos de las Cartas de Personajes */
         .character-card {
             transition: all 0.3s ease;
-            border-left: 4px solid transparent;
+            border-left: 5px solid transparent;
+            background: rgba(31, 41, 55, 0.7);
+            backdrop-filter: blur(5px);
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            height: 100%;
         }
 
         .character-card:hover {
-            transform: translateY(-5px);
+            transform: scale(1.02);
+            background: rgba(31, 41, 55, 0.9);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
         }
         
-        .character-card.siegward {
-            border-left-color: #FFD700;
-        }
-        
-        .character-card.anri {
-            border-left-color: #4169E1;
-        }
-        
-        .character-card.greirat {
-            border-left-color: #8B4513;
-        }
-        
-        .character-card.guardian {
-            border-left-color: #FF4500;
+        .character-card.siegward { border-left-color: #FFD700; }
+        .character-card.anri { border-left-color: #4169E1; }
+        .character-card.greirat { border-left-color: #B45309; }
+        .character-card.guardian { border-left-color: #EF4444; }
+
+        .character-image {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-right: 30px !important;
+            flex-shrink: 0;
         }
 
-        .icon-container {
-            height: 60px;
-            width: 60px;
+        .character-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .character-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .character-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
         }
 
-        .bg-dark-souls {
-            background: linear-gradient(135deg, #1F2937 0%, #111827 100%);
+        .character-title {
+            font-size: 3.0rem !important;
+            font-weight: bold;
+            color: white;
+            margin: 0;
         }
-</style>
 
+        .character-description {
+            color: #9ca3af;
+            font-size: 0.875rem;
+            line-height: 1.5;
+            margin-bottom: 20px !important;
+            text-align: justify;
+        }
+
+        .character-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            align-self: flex-end;
+            margin-top: auto;
+        }
+        
+        .icon-container {
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .custom-page-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            color: #4b5563;
+            font-family: sans-serif;
+            font-size: 1.2rem;
+        }
+
+        .bg-dark-souls-gradient {
+            background: radial-gradient(circle at center, #1f2937 0%, #111827 100%);
+        }
+    </style>
 </head>
 <body>
-<div class="slide bg-dark-souls flex flex-col items-center justify-between">
-<!-- Top section with title -->
-<div class="w-full pt-10 pb-4 px-16 text-center">
-<h1 class="title text-5xl font-bold text-white mb-2">Personajes en Dark Souls 3</h1>
-<p class="subtitle text-2xl text-gray-300">Personajes complejos con motivaciones profundas y arcos narrativos significativos</p>
-</div>
-<!-- Middle section with character cards -->
-<div class="grid grid-cols-2 gap-6 w-full px-16 pb-6">
-<!-- Siegward de Catarina -->
-<div class="character-card siegward bg-gray-800 rounded-lg p-5 shadow-lg flex">
-<div class="icon-container bg-yellow-900 mr-4 flex-shrink-0">
-<i class="fas fa-shield-alt text-3xl text-yellow-400"></i>
-</div>
-<div>
-<h2 class="text-2xl font-bold text-white mb-2">Siegward de Catarina</h2>
-<p class="text-gray-300 mb-3">Un caballero honorable cuya historia se centra en el cumplimiento de promesas y la lealtad inquebrantable.</p>
-<div class="flex items-center">
-<span class="bg-yellow-800 text-yellow-300 text-sm px-2 py-1 rounded mr-2">
-<i class="fas fa-handshake mr-1"></i> Lealtad
-                    </span>
-<span class="bg-yellow-800 text-yellow-300 text-sm px-2 py-1 rounded">
-<i class="fas fa-heart mr-1"></i> Cumplimiento de promesas
-                    </span>
-</div>
-</div>
-</div>
-<!-- Anri de Astora -->
-<div class="character-card anri bg-gray-800 rounded-lg p-5 shadow-lg flex">
-<div class="icon-container bg-blue-900 mr-4 flex-shrink-0">
-<i class="fas fa-balance-scale text-3xl text-blue-400"></i>
-</div>
-<div>
-<h2 class="text-2xl font-bold text-white mb-2">Anri de Astora</h2>
-<p class="text-gray-300 mb-3">Un personaje cuya narrativa está ligada a un propósito y la búsqueda de justicia, enfrentándose a la maldición de los No Muertos.</p>
-<div class="flex items-center">
-<span class="bg-blue-800 text-blue-300 text-sm px-2 py-1 rounded mr-2">
-<i class="fas fa-gavel mr-1"></i> Justicia
-                    </span>
-<span class="bg-blue-800 text-blue-300 text-sm px-2 py-1 rounded">
-<i class="fas fa-users mr-1"></i> Complejidad moral
-                    </span>
-</div>
-</div>
-</div>
-<!-- Greirat de la Gran Muralla -->
-<div class="character-card greirat bg-gray-800 rounded-lg p-5 shadow-lg flex">
-<div class="icon-container bg-amber-900 mr-4 flex-shrink-0">
-<i class="fas fa-coins text-3xl text-amber-400"></i>
-</div>
-<div>
-<h2 class="text-2xl font-bold text-white mb-2">Greirat de la Gran Muralla</h2>
-<p class="text-gray-300 mb-3">Un ladrón que busca segundas oportunidades y redención. Su historia es un recordatorio de la fragilidad de la vida y la importancia de la ayuda mutua.</p>
-<div class="flex items-center">
-<span class="bg-amber-800 text-amber-300 text-sm px-2 py-1 rounded mr-2">
-<i class="fas fa-redo mr-1"></i> Redención
-                    </span>
-<span class="bg-amber-800 text-amber-300 text-sm px-2 py-1 rounded">
-<i class="fas fa-hands-helping mr-1"></i> Ayuda mutua
-                    </span>
-</div>
-</div>
-</div>
-<!-- Guardiana de Fuego -->
-<div class="character-card guardian bg-gray-800 rounded-lg p-5 shadow-lg flex">
-<div class="icon-container bg-red-900 mr-4 flex-shrink-0">
-<i class="fas fa-fire text-3xl text-red-400"></i>
-</div>
-<div>
-<h2 class="text-2xl font-bold text-white mb-2">Guardiana de Fuego</h2>
-<p class="text-gray-300 mb-3">Representa la conexión absoluta con el destino del mundo y la posibilidad de un futuro. Su papel es fundamental para el ciclo de la Primera Llama.</p>
-<div class="flex items-center">
-<span class="bg-red-800 text-red-300 text-sm px-2 py-1 rounded mr-2">
-<i class="fas fa-infinity mr-1"></i> Conexión con el destino
-                    </span>
-<span class="bg-red-800 text-red-300 text-sm px-2 py-1 rounded">
-<i class="fas fa-seedling mr-1"></i> Devoción
-                    </span>
-</div>
-</div>
-</div>
-</div>
-<!-- Bottom section with conclusion -->
-<div class="w-full px-16 pb-10">
-<div class="bg-gray-800 bg-opacity-70 rounded-lg p-4 text-center">
-<p class="text-xl text-yellow-400 font-bold italic">"Estos personajes, con sus luchas internas y externas, ofrecen una profundidad narrativa que trasciende la mera interacción."</p>
-</div>
-</div>
-<!-- Page number -->
-<div class="page-number">6/10</div>
-</div>
 
-</body></html>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div class="w-full h-full bg-[#111827] flex flex-col items-center justify-between p-10 relative">
+                    
+                    <div class="w-full text-center">
+                        <h1 class="title text-6xl font-bold text-white mb-2">Personajes en Dark Souls 3</h1>
+                        <p class="text-2xl text-gray-400">Motivaciones profundas y arcos narrativos significativos</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-8 w-full px-6 py-4">
+                        
+                        <div class="character-card siegward rounded-xl p-6 shadow-xl">
+                            <img src="Imagenes/personaje_siegward.jpg" alt="Siegward de Catarina" class="character-image">
+                            <div class="character-content">
+                                <div class="character-header">
+                                    <div class="character-icon bg-yellow-900/40">
+                                        <i class="fas fa-shield-alt text-yellow-500"></i>
+                                    </div>
+                                    <h2 class="character-title">Siegward de Catarina</h2>
+                                </div>
+                                <p class="character-description">Caballero honorable. Su historia trata sobre promesas de vida o muerte y lealtad inquebrantable.</p>
+                                <div class="character-tags">
+                                    <span class="bg-yellow-900/30 text-yellow-500 text-xs font-bold px-3 py-1 rounded-full border border-yellow-900/50">LEALTAD</span>
+                                    <span class="bg-yellow-900/30 text-yellow-500 text-xs font-bold px-3 py-1 rounded-full border border-yellow-900/50">PROMESA</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="character-card anri rounded-xl p-6 shadow-xl">
+                            <img src="Imagenes/personaje_anri.png" alt="Anri de Astora" class="character-image">
+                            <div class="character-content">
+                                <div class="character-header">
+                                    <div class="character-icon bg-blue-900/40">
+                                        <i class="fas fa-balance-scale text-blue-400"></i>
+                                    </div>
+                                    <h2 class="character-title">Anri de Astora</h2>
+                                </div>
+                                <p class="character-description">Búsqueda de justicia y propósito frente a la maldición de los No Muertos. Un arco trágico y complejo.</p>
+                                <div class="character-tags">
+                                    <span class="bg-blue-900/30 text-blue-400 text-xs font-bold px-3 py-1 rounded-full border border-blue-900/50">JUSTICIA</span>
+                                    <span class="bg-blue-900/30 text-blue-400 text-xs font-bold px-3 py-1 rounded-full border border-blue-900/50">DESTINO</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="character-card greirat rounded-xl p-6 shadow-xl">
+                            <img src="Imagenes/personaje_greirat.png" alt="Greirat de la Muralla" class="character-image">
+                            <div class="character-content">
+                                <div class="character-header">
+                                    <div class="character-icon bg-amber-900/40">
+                                        <i class="fas fa-coins text-amber-500"></i>
+                                    </div>
+                                    <h2 class="character-title">Greirat de la Muralla</h2>
+                                </div>
+                                <p class="character-description">Ladrón en busca de redención. Su historia nos recuerda la fragilidad de la vida en un mundo que agoniza.</p>
+                                <div class="character-tags">
+                                    <span class="bg-amber-900/30 text-amber-500 text-xs font-bold px-3 py-1 rounded-full border border-amber-900/50">REDENCIÓN</span>
+                                    <span class="bg-amber-900/30 text-amber-500 text-xs font-bold px-3 py-1 rounded-full border border-amber-900/50">SACRIFICIO</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="character-card guardian rounded-xl p-6 shadow-xl">
+                            <img src="Imagenes/personaje_guardiana.png" alt="Guardiana de Fuego" class="character-image">
+                            <div class="character-content">
+                                <div class="character-header">
+                                    <div class="character-icon bg-red-900/40">
+                                        <i class="fas fa-fire text-red-400"></i>
+                                    </div>
+                                    <h2 class="character-title">Guardiana de Fuego</h2>
+                                </div>
+                                <p class="character-description">Conexión absoluta con el destino del mundo. Eje fundamental del ciclo de la Primera Llama.</p>
+                                <div class="character-tags">
+                                    <span class="bg-red-900/30 text-red-400 text-xs font-bold px-3 py-1 rounded-full border border-red-900/50">DEVOCIÓN</span>
+                                    <span class="bg-red-900/30 text-red-400 text-xs font-bold px-3 py-1 rounded-full border border-red-900/50">ETERNIDAD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="w-full px-6 mb-6">
+                        <div class="bg-gray-800/40 border border-gray-700 rounded-xl p-5 text-center backdrop-blur-sm">
+                            <p class="text-xl text-yellow-500 font-bold italic leading-relaxed">
+                                "Estos personajes ofrecen una profundidad narrativa que trasciende la mera interacción, algo inexistente en el loop de 'ponerla'."
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="custom-page-number">6</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            embedded: true,
+            controls: false,
+            progress: false,
+            slideNumber: false,
+            center: false,
+            width: 1920,
+            height: 1080,
+            margin: 0,
+            minScale: 0.1,
+            maxScale: 2.0
+        });
+    </script>
+</body>
+</html>
