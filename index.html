@@ -108,6 +108,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5/dist/reveal.js"></script>
     <script>
+        // Detectar si estamos accediendo directamente a una slide individual
+        if (window.location.pathname !== '/' && window.location.pathname !== '/index.html' && !window.location.pathname.endsWith('/')) {
+            // Redirigir al index.html si accedemos a una slide individual
+            window.location.replace(window.location.origin + window.location.pathname.replace(/\/[^\/]*$/, '/') + 'index.html');
+        }
+        
         const navPrev = document.getElementById('navPrev');
         const navNext = document.getElementById('navNext');
 
